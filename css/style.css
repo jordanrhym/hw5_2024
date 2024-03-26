@@ -1,0 +1,209 @@
+
+/* Step 1:  Animate Logo using @keyframes*/
+/* I used @keyframes to create an animation I labeled slidego. Slidego makes an element scale from 25px to 475px.*/
+@keyframes slidelogo {
+    0% {
+        width: 25px;
+        opacity: 0;
+    }
+    100% {
+        width: 475px;
+        opacity: 1;}
+  }
+/* Step 1.5: call the keyframes on the logo */
+/* The animation should take 5 seconds and only happen when the page is loaded. */
+#logo {
+    animation-name: slidelogo; /*@keyframes element is pulled in*/
+    animation-duration: 5s; /* limit to five seconds*/
+}
+
+/* Step 2
+Elements of Step 2: Font-family is used to call the Poppins font (using Google fonts) with serif as a backup. for the body text. Background-image is used to pull in “concrete_seamless.png” as a background-image with. I have also added a background color of #f1f1f1. */
+
+body {
+    font-family: "Poppins", serif; /*pulled from Google Fonts*/
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* Step 3
+ header is being used to ensure ALL INSTANCES of the header tag is edited. Flex is used to align the headers to the center of their containers and the flex-direction column stacks the header elements on top of each other.*/
+
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Step #4
+This further implements a flex structure for the element and stacks the nav links on top of each other by using a flex-directino of column. */
+
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Step #5 
+In orde to keep the page links the same color both before and after visitation, the color tag was used to keep the link and visited links the same color */
+a:link, a:visited {
+    /* text-decoration: none; */
+    color: blue;
+  }
+
+/* Step #6
+The ">" selector is the proper selector to style ONLY those header elements that are direct children of a card class. Border-radius is used to ensure that only the top right and left corners of the .card elements are receiving a curve.  */
+.card > header {
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+/* Step #7
+Flex-basis is used to keep the width of the card elements at 450px. I initially attempted to use flex to address the width of the cards, but it interfered with my code. */
+.card {
+    display:flex;
+    flex-direction: column;
+    flex-basis: 450px;/* initial size of 450px */
+    /* flex: 1 1 450px; initial size of 450px */
+    width: 70% ;
+}
+
+/* Step #8
+The pricing element needed to match the example, and in order to center the pricing content horizontally and vertically, I used center values for the align-items and justify-content properties */
+.pricing {
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Step #9
+This code styles the images in the gallery class. A solid blue border was created around each image and they were given a 300px width*/
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+    /* height: 100%;
+    object-fit: cover; */
+}
+
+/* Step #10
+This code styles the gallery class. In order to match the example, flex wrap was used to have the images stand in line with each other if the screen media size has enough space. Before, the images were stacked and aligned to the left. Using justify-content, the gallery was also centered on the container of the page. */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (min-width: 900px) {
+/* Step #11
+In this code the header and nav links are edited to resemble the example image. Both elements utiize flex-direction (row) to stack the items horizontally, specifically from left to right. The header uses justify-content (space-between) to create space bewteen the lines of text, and thenfor the .nav_links element, align-items (flex-end) and justify-content (flex-end)  were used to place the elements at the end of the container both vertically and horizontally.*/
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        /* flex-direction: column; */
+    }
+    /* nav_links class edits */
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    /* Step #12
+    In order to edit the .pricing element,the example page wanted the pricing elements to be centered in the page horizontally and vertically, so center was the value used for the align-items and justify-content properties.
+
+    For the .card element, a flex-basis of 275px was used to ensure that the "size" or really the width is consistently that many pixels across the three information cards.*/
+
+    /* #header pricing class edits */
+    .pricing {
+        display:flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    /* #header card class edits */
+    .card {
+        display:flex;
+        flex-direction: column;
+        flex-basis: 275px;/* initial size of 275px */
+        width: 70% ;
+    }
+
+    /* Step #13
+    In order to produce a sticky header, I utilized position fixed to keep the header at the top of the page when scrolling and gave the main section of the page padding to prevent overlapping the main content with the sticky header. 
+    
+    I also used the :not pseudo-class to prevent headers in the main section of the html code from being affected by the sticky code.*/
+
+    header:not(div > header, li > header) {
+        padding: 10px 16px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    main {
+        padding-top: 100px;
+    }
+}
+/* Step #14
+    This is an accessibility measure to ensure users who do either do not want to or are unable to engage with animation material will not have to view the logo transition at the top of the page. To prevent the animation, the media query (prefers-reduced-motion) is used and the animation is set to none*/
+
+@media (prefers-reduced-motion) {
+        #logo {
+            animation: none;
+        }
+}
+
+@media print and (orientation: portrait){
+
+    /* Step #15 and 16
+    For the print portrait page, the font-family has been changed to Arial (with Helvetica as a backup and the background image (“concrete_seamless.png”) was removed*/
+
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    /* Step #17
+    The nav and nav_links elements are edited using justify-content (center) on the nav to center the nav bar and then for nav-links, flex-direction (row) to put the links in a line and justify-content (space-around) to place space between the linked nav items*/
+
+    nav {
+        justify-content: center;
+    }
+
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Step #18
+    The pricing element is edited with an align-items (flex-end) to align the items in pricing along the bottom of the container*/
+
+    .pricing {
+        align-items: flex-end;
+    }
+
+    /* Step #19
+    The card element gains a solid 2px border and a flex-basis width of 325px.*/
+
+    .card {
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* Step #20
+    To hide the gallery section of the page, I opted to use display (none) so the elements no longer show on the page and that space is not reserved and blank*/
+    .gallery {
+        /* visibility: hidden; */
+        display: none;
+    }
+
+    /* Step #21
+    */
+
+}
