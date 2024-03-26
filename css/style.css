@@ -117,7 +117,7 @@ In this code the header and nav links are edited to resemble the example image. 
     /* Step #12
     In order to edit the .pricing element,the example page wanted the pricing elements to be centered in the page horizontally and vertically, so center was the value used for justify-content property.
 
-    For the .card element, I initially used a flex-basis of 275px to ensure that the "size" or really the width of the card would be consistently that many pixels across the three information cards. But after deploying the sit, I realized the grow and shrink propeties of the flex were still allowing variation to the element size in the print page. Flex allows me to prevent this change*/
+    For the .card element, a flex-basis of 275px was used to ensure that the "size" or really the width is consistently that many pixels across the three information cards.*/
 
     /* #header pricing class edits */
     .pricing, p {
@@ -129,8 +129,7 @@ In this code the header and nav links are edited to resemble the example image. 
     .card {
         display:flex;
         flex-direction: column;
-        /* flex-basis: 275px;initial size of 275px */
-        flex: 0 0 275px;
+        flex-basis: 275px;/* initial size of 275px */
         width: 70% ;
     }
 
@@ -191,11 +190,12 @@ In this code the header and nav links are edited to resemble the example image. 
     }
 
     /* Step #19
-    The card element gains a solid 2px border and a flex-basis width of 325px.*/
+    The card element gains a solid 2px border and a flex of 0 0 325px. I initially tried to use a flex-basis width of 325px but this allowed the card sized to fluctuate beyond the 325px I intended it to have. The 0 and 0 prevent this from happening.*/
 
     .card {
         border: solid 2px #45ADDD;
-        flex-basis: 325px;
+        /* flex-basis: 325px; */
+        flex: 0 0 325px;
     }
 
     /* Step #20
@@ -207,6 +207,6 @@ In this code the header and nav links are edited to resemble the example image. 
 
     /* Step #21
     */
-    .card li 
+    card li 
     content: "\1F44D";
 }
