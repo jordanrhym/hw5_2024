@@ -1,5 +1,19 @@
 
-/* Step 1:  Animate Logo using @keyframes*/
+.skip {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+.skip:focus {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+  /* Step 1:  Animate Logo using @keyframes*/
 /* I used @keyframes to create an animation I labeled slidego. Slidego makes an element scale from 25px to 475px.*/
 @keyframes slidelogo {
     0% {
@@ -151,13 +165,13 @@ In this code the header and nav links are edited to resemble the example image. 
 /* Step #14
     This is an accessibility measure to ensure users who do either do not want to or are unable to engage with animation material will not have to view the logo transition at the top of the page. To prevent the animation, the media query (prefers-reduced-motion) is used and the animation is set to none*/
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion: reduce) {
         #logo {
             animation: none;
         }
 }
 
-@media print and (orientation: portrait){
+@media print and (orientation: portrait) {
 
     /* Step #15 and 16
     For the print portrait page, the font-family has been changed to Arial (with Helvetica as a backup and the background image (“concrete_seamless.png”) was removed*/
@@ -197,18 +211,20 @@ In this code the header and nav links are edited to resemble the example image. 
         /* flex-basis: 325px; */
         flex: 325px;
         flex-shrink: 1;
+        flex-wrap: nowrap;
     }
 
     /* Step #20
     To hide the gallery section of the page, I opted to use display (none) so the elements no longer show on the page and that space is not reserved and blank*/
-    .gallery {
+    #gallery, .gallery, .gallery img {
         /* visibility: hidden; */
         display: none;
     }
 
     /* Step #21
+    Using the example from the "CSS content Property" W3W page, I inserted a thumbs up emoji following the seconf .card list item. The code uses a unicode value to create the emoji.
     */
     .card li:nth-child(2)::after {
-    content: "\1F44D";
+        content: "\1F44D";
     }
 }
