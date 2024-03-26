@@ -117,7 +117,7 @@ In this code the header and nav links are edited to resemble the example image. 
     /* Step #12
     In order to edit the .pricing element,the example page wanted the pricing elements to be centered in the page horizontally and vertically, so center was the value used for justify-content property.
 
-    For the .card element, a flex-basis of 275px was used to ensure that the "size" or really the width is consistently that many pixels across the three information cards.*/
+    For the .card element, I initially used a flex-basis of 275px to ensure that the "size" or really the width of the card would be consistently that many pixels across the three information cards. But after deploying the sit, I realized the grow and shrink propeties of the flex were still allowing variation to the element size in the print page. Flex allows me to prevent this change*/
 
     /* #header pricing class edits */
     .pricing, p {
@@ -129,7 +129,8 @@ In this code the header and nav links are edited to resemble the example image. 
     .card {
         display:flex;
         flex-direction: column;
-        flex-basis: 275px;/* initial size of 275px */
+        /* flex-basis: 275px;initial size of 275px */
+        flex: 0 0 275px;
         width: 70% ;
     }
 
@@ -182,7 +183,7 @@ In this code the header and nav links are edited to resemble the example image. 
     }
 
     /* Step #18
-    The pricing element is edited with an align-items (flex-end) to align the items in pricing along the bottom of the container. I then placed them in a row so that they align horizontally in a row*/
+    The pricing element is edited with an align-items (flex-end) to align the items in pricing along the bottom of the container. I then placed them in a row so that they align horizontally in a row. Before I added row, they failed to appear in one line (or row) when testing the deployed page.*/
 
     .pricing {
         align-items: flex-end;
@@ -206,5 +207,6 @@ In this code the header and nav links are edited to resemble the example image. 
 
     /* Step #21
     */
-
+    .card li 
+    content: "\1F44D";
 }
