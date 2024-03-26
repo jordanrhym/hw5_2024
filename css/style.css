@@ -115,15 +115,14 @@ In this code the header and nav links are edited to resemble the example image. 
     }
 
     /* Step #12
-    In order to edit the .pricing element,the example page wanted the pricing elements to be centered in the page horizontally and vertically, so center was the value used for the align-items and justify-content properties.
+    In order to edit the .pricing element,the example page wanted the pricing elements to be centered in the page horizontally and vertically, so center was the value used for justify-content property.
 
     For the .card element, a flex-basis of 275px was used to ensure that the "size" or really the width is consistently that many pixels across the three information cards.*/
 
     /* #header pricing class edits */
-    .pricing {
+    .pricing, p {
         display:flex;
         flex-wrap: wrap;
-        align-items: center;
         justify-content: center;
     }
     /* #header card class edits */
@@ -169,10 +168,11 @@ In this code the header and nav links are edited to resemble the example image. 
     }
 
     /* Step #17
-    The nav and nav_links elements are edited using justify-content (center) on the nav to center the nav bar and then for nav-links, flex-direction (row) to put the links in a line and justify-content (space-around) to place space between the linked nav items*/
+    The nav and nav_links elements are edited using a width of 100% on the nav to further spread the justify-=content property used on the navigation links. For the Navigationn links, I used flex-direction (row) to put the links in a line and justify-content (space-around) to place space between the linked nav items*/
 
     nav {
-        justify-content: center;
+        /* justify-content: center; */
+        width: 100%;
     }
 
     .nav_links {
@@ -182,10 +182,11 @@ In this code the header and nav links are edited to resemble the example image. 
     }
 
     /* Step #18
-    The pricing element is edited with an align-items (flex-end) to align the items in pricing along the bottom of the container*/
+    The pricing element is edited with an align-items (flex-end) to align the items in pricing along the bottom of the container. I then placed them in a row so that they align horizontally in a row*/
 
     .pricing {
         align-items: flex-end;
+        flex-direction: row;
     }
 
     /* Step #19
